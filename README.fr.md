@@ -1,44 +1,35 @@
 [English](README.md) · **Français**
 
-**Anthony Hunt** · [Fiche du projet sur ingevision.cloud](https://ingevision.cloud/?p=banc-slm) · [LinkedIn](https://www.linkedin.com/in/anthony-hunt-3948a9196) · [Profil GitHub](https://github.com/anthohunt)
-
-> Dépôt vitrine : le code et les données de ce projet sont privés ; ce README le décrit.
-
 # Banc d'évaluation de petits modèles
 
-Un banc web qui fait passer à des petits modèles de langage (SLM) une même série de 28 questions et note leurs réponses sans juge humain ni LLM-juge.
+**Les mêmes 28 questions pour chaque petit modèle de langage, notées par des règles fixes, sans juge humain ni LLM-juge.** Construit pour choisir le modèle d'un agent qui tourne sur un casque de réalité virtuelle ou un téléphone.
 
-## Le problème
+[![Une vraie série : Gemma 4 8B, cible ordinateur portable, trois questions notées en direct, puis l'arbre du modèle face à la référence (cliquer pour la vidéo complète)](docs/demo.gif)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)
 
-Choisir un petit modèle pour un agent embarqué (casque de réalité virtuelle, smartphone) demande de savoir ce qu'il réussit vraiment, avec quelle consigne et dans quelle mémoire. Le banc a été construit pour un stage encadré dans une école d'ingénieurs : l'étudiant y lance ses séries et lit les résultats seul.
+*Une vraie série sur le banc, trois questions, attente accélérée. [Vidéo complète (0:57)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)*
 
-## Comment ça marche
+## Ce qu'on fait avec
 
-- Trois réglages : le modèle, le matériel visé (casque Quest 3, smartphone 8 ou 12 Go, portable 16 Go, poste 32 Go, serveur) et le prompt système. Le matériel fixe la taille de contexte ; les appareils où le modèle ne tient pas sont retirés.
-- 28 questions en trois familles : 5 arbres d'indicateurs de performance, 6 chaînes causales, 17 QCM posés sur un cours, avec recherche dans ce cours (RAG).
-- Chaque réponse est validée contre un schéma, puis notée par des règles déterministes : structure de l'arbre ou de la chaîne, transitions autorisées entre types de nœuds, lettre exacte pour les QCM.
-- Le score principal est le nombre de questions entièrement correctes ; à côté, les réussites du premier coup et la moyenne des règles passées.
-- Chaque question se déplie : vérifications échouées, réponse reçue, graphe 3D de la réponse du modèle face à une réponse de référence.
+- **Trois réglages.** Le modèle, le matériel visé et le prompt système. Le matériel fixe la taille de contexte ; les appareils où le modèle ne tient pas sont retirés.
+- **28 questions.** 5 arbres d'indicateurs de performance, 6 chaînes causales, 17 QCM sur le cours, avec recherche dans ce cours (RAG).
+- **Notation par règles fixes.** Chaque réponse est validée contre un schéma, puis vérifiée : structure de l'arbre ou de la chaîne, transitions autorisées entre types de nœuds, lettre exacte pour les QCM. Score principal : questions entièrement correctes.
+- **Détail en direct.** Chaque question s'affiche dès qu'elle est notée. Elle s'ouvre sur les vérifications échouées, la réponse reçue et un graphe 3D de la réponse du modèle face à une réponse de référence.
+- **Historique.** Prompts système enregistrés en versions par famille ; une modification non enregistrée est signalée dans l'historique. La courbe ne relie que des séries comparables.
 
-## Ce qui est construit
+## Architecture
 
-En service en continu sur le réseau interne de l'établissement.
+![Architecture du banc : le navigateur lance une série sur le serveur de l'école ; le banc cherche dans l'index du cours pour les QCM, interroge le modèle servi par Ollama, note la réponse JSON par des règles fixes, enregistre le résultat et affiche chaque question en direct](docs/architecture.svg)
 
-- Trois modèles disponibles : Gemma 4 26B, Gemma 4 8B et LFM2.5-1.2B, le petit modèle visé.
-- Prompts système enregistrés en versions par famille ; un prompt modifié sans être enregistré est signalé et marqué dans l'historique.
-- Historique des séries et courbe qui ne relie que des séries comparables.
-- Vérification avant remise : 6 combinaisons sur 6 sans erreur technique. Durée par question : 120 à 175 s pour le 26B, 40 à 57 s pour le 8B, 14 s pour LFM2.5.
-- Les modèles tournent sur processeur : les latences mesurées ne disent rien d'un GPU ni d'un casque.
-- Pas encore fait : archiver le texte exact du prompt avec chaque série, répéter une question pour mesurer la variance, garder la sortie brute des échecs complets.
+## Déploiement
 
-## Ce qui est public
+- **Hébergement.** Conteneur Docker sur un serveur de l'école, joignable seulement par le VPN de l'école, en service continu depuis juillet 2026.
+- **Modèles.** Le serveur Ollama partagé de l'école : sur processeur en août 2026, sur GPU le 16 novembre 2026. Ses latences ne disent rien d'un casque. Ce jour-là, seul Gemma 4 8B était encore installé ; Gemma 4 26B et LFM2.5-1.2B, toujours proposés, avaient été retirés.
+- **Usage.** Construit pour un stage d'été encadré dans une école d'ingénieurs ; 146 séries enregistrées du 1er au 10 août 2026.
+- **Pas encore fait.** Archiver le texte exact du prompt avec chaque série, répéter une question pour mesurer la variance, garder la sortie brute des échecs complets.
+- **Pile.** Python, uv, pydantic-ai, Pydantic, LangChain, Chroma, nomic-embed-text, Three.js, Docker Compose.
 
-Cette vitrine est publique ; le code, les questions et les résultats restent privés, dans le dépôt de l'établissement.
+---
 
-## Pile technique
+**Anthony Hunt** · [ingevision.cloud](https://ingevision.cloud/?p=banc-slm) · [LinkedIn](https://www.linkedin.com/in/anthony-hunt-3948a9196) · [GitHub](https://github.com/anthohunt)
 
-- Python, uv
-- Ollama, pydantic-ai et Pydantic pour les sorties structurées
-- LangChain, Chroma et nomic-embed-text pour la recherche dans le cours
-- Three.js pour les graphes 3D
-- Docker Compose
+Le code, les questions et les résultats sont privés, dans le dépôt de l'école.

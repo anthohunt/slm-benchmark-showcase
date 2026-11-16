@@ -1,44 +1,37 @@
 **English** · [Français](README.fr.md)
 
-**Anthony Hunt** · [Project page on ingevision.cloud](https://ingevision.cloud/?lang=en&p=banc-slm) · [LinkedIn](https://www.linkedin.com/in/anthony-hunt-3948a9196) · [GitHub profile](https://github.com/anthohunt)
-
-> Showcase repository: the code and data of this project are private; this README describes it.
-
 # Small-model benchmark
 
-A web bench that puts the same set of 28 questions to small language models (SLMs) and scores their answers without a human or LLM judge.
+**The same 28 questions for every small language model, scored by fixed rules, with no human or LLM judge.** Built to choose a model for an agent that runs on a VR headset or a phone.
 
-## The problem
+[![A real run: Gemma 4 8B, laptop target, three questions scored live, then the model's tree next to the reference (click for the full video)](docs/demo.gif)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)
 
-Choosing a small model for an on-device agent (virtual reality headset, smartphone) requires knowing what it actually gets right, with which instructions and within which memory. The bench was built for a supervised internship at an engineering school: the student runs series and reads the results on their own.
+*A real run on the bench, three questions, waiting time sped up. [Full video (0:57)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)*
 
-## How it works
+## Using it
 
-- Three settings: the model, the target hardware (Quest 3 headset, 8 or 12 GB smartphone, 16 GB laptop, 32 GB workstation, server) and the system prompt. The hardware sets the context size; devices the model does not fit on are removed.
-- 28 questions in three families: 5 performance indicator trees, 6 causal chains, 17 multiple-choice questions on a course, with retrieval from that course (RAG).
-- Each answer is validated against a schema, then scored by deterministic rules: tree or chain structure, allowed transitions between node types, exact letter for multiple-choice questions.
-- The main score is the number of fully correct questions; alongside it, first-attempt successes and the average of rules passed.
-- Each question expands: failed checks, raw answer, 3D graph of the model's answer next to a reference answer.
+- **Three settings.** The model, the target hardware and the system prompt. The hardware sets the context window; devices the model does not fit on are removed.
+- **28 questions.** 5 performance indicator trees, 6 causal chains, 17 multiple-choice questions on the course, answered with retrieval from it (RAG).
+- **Fixed-rule scoring.** Each answer is validated against a schema, then checked: tree or chain structure, allowed transitions between node types, exact letter for multiple choice. Main score: questions fully correct.
+- **Live detail.** Each question appears as soon as it is scored. It opens on the failed checks, the raw answer and a 3D graph of the model's answer next to a reference answer.
+- **History.** System prompts saved as versions per family; an unsaved edit is flagged in the history. The curve only links comparable runs.
 
-## What is built
+## Architecture
 
-Running continuously on the institution's internal network.
+![Bench architecture: the browser starts a run on the school server; the bench searches the course index for multiple-choice questions, asks the model served by Ollama, scores the JSON answer with fixed rules, stores the result and shows each question live](docs/architecture.svg)
 
-- Three models available: Gemma 4 26B, Gemma 4 8B and LFM2.5-1.2B, the target small model.
-- System prompts saved as versions per family; a prompt modified without being saved is flagged and marked in the history.
-- Run history and a curve that only links comparable runs.
-- Check before handover: 6 combinations out of 6 with no technical error. Time per question: 120 to 175 s for the 26B, 40 to 57 s for the 8B, 14 s for LFM2.5.
-- Models run on CPU: measured latencies say nothing about a GPU or a headset.
-- Not done yet: archiving the exact prompt text with each run, repeating a question to measure variance, keeping raw output from complete failures.
+*Diagram labels are in French.*
 
-## What is public
+## Deployment
 
-This showcase is public; the code, questions and results remain private, in the institution's repository.
+- **Hosting.** Docker container on a school server, reachable only through the school VPN, running continuously since July 2026.
+- **Models.** The school's shared Ollama server: on CPU in August 2026, on GPU on 16 November 2026. Its latencies say nothing about a headset. That day only Gemma 4 8B was still installed; Gemma 4 26B and LFM2.5-1.2B, still listed, had been removed.
+- **Use.** Built for a supervised summer internship at an engineering school; 146 runs recorded between 1 and 10 August 2026.
+- **Not done.** Storing the exact prompt text with each run, repeating a question to measure variance, keeping the raw output of complete failures.
+- **Stack.** Python, uv, pydantic-ai, Pydantic, LangChain, Chroma, nomic-embed-text, Three.js, Docker Compose.
 
-## Tech stack
+---
 
-- Python, uv
-- Ollama, pydantic-ai and Pydantic for structured outputs
-- LangChain, Chroma and nomic-embed-text for course retrieval
-- Three.js for 3D graphs
-- Docker Compose
+**Anthony Hunt** · [ingevision.cloud](https://ingevision.cloud/?lang=en&p=banc-slm) · [LinkedIn](https://www.linkedin.com/in/anthony-hunt-3948a9196) · [GitHub](https://github.com/anthohunt)
+
+The code, questions and results are private, in the school's repository.
