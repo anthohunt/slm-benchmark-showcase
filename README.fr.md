@@ -11,8 +11,8 @@
 ## Ce qu'on fait avec
 
 - **Trois réglages.** Le modèle, le matériel visé et le prompt système. Le matériel fixe la taille de contexte ; les appareils où le modèle ne tient pas sont retirés.
-- **28 questions.** 5 arbres d'indicateurs de performance, 6 chaînes causales, 17 QCM sur le cours, avec recherche dans ce cours (RAG).
-- **Notation par règles fixes.** Chaque réponse est validée contre un schéma, puis vérifiée : structure de l'arbre ou de la chaîne, transitions autorisées entre types de nœuds, lettre exacte pour les QCM. Score principal : questions entièrement correctes.
+- **Jeu de questions.** 5 arbres d'indicateurs de performance, 6 chaînes causales, 17 QCM sur le cours, avec recherche dans ce cours (RAG).
+- **Vérifications.** Chaque réponse est validée contre un schéma, puis vérifiée : structure de l'arbre ou de la chaîne, transitions autorisées entre types de nœuds, lettre exacte pour les QCM. Score principal : questions entièrement correctes.
 - **Détail en direct.** Chaque question s'affiche dès qu'elle est notée. Elle s'ouvre sur les vérifications échouées, la réponse reçue et un graphe 3D de la réponse du modèle face à une réponse de référence.
 - **Historique.** Prompts système enregistrés en versions par famille ; une modification non enregistrée est signalée dans l'historique. La courbe ne relie que des séries comparables.
 
@@ -23,8 +23,8 @@
 ## Déploiement
 
 - **Hébergement.** Conteneur Docker sur un serveur de l'école, joignable seulement par le VPN de l'école, en service continu depuis juillet 2026.
-- **Modèles.** Le serveur Ollama partagé de l'école : sur processeur en août 2026, sur GPU le 16 novembre 2026. Ses latences ne disent rien d'un casque. Ce jour-là, seul Gemma 4 8B était encore installé ; Gemma 4 26B et LFM2.5-1.2B, toujours proposés, avaient été retirés.
-- **Usage.** Construit pour un stage d'été encadré dans une école d'ingénieurs ; 146 séries enregistrées du 1er au 10 août 2026.
+- **Modèles.** Le serveur Ollama partagé de l'école, sur processeur en août 2026 et sur GPU le 16 novembre 2026 ; ses latences ne disent rien d'un casque. Le 16 novembre, seul Gemma 4 8B était installé : Gemma 4 26B et LFM2.5-1.2B sont proposés mais ne tournent plus.
+- **Usage.** Fait pour un stage d'été encadré dans une école d'ingénieurs ; 146 séries enregistrées du 1er au 10 août 2026.
 - **Pas encore fait.** Archiver le texte exact du prompt avec chaque série, répéter une question pour mesurer la variance, garder la sortie brute des échecs complets.
 - **Pile.** Python, uv, pydantic-ai, Pydantic, LangChain, Chroma, nomic-embed-text, Three.js, Docker Compose.
 
