@@ -4,23 +4,24 @@
 
 **Les mêmes 28 questions pour chaque petit modèle de langage, notées par des règles fixes, sans juge humain ni LLM-juge.** Construit pour choisir le modèle d'un agent qui tourne sur un casque de réalité virtuelle ou un téléphone.
 
-[![Une vraie série : Gemma 4 8B, cible ordinateur portable, trois questions notées en direct, puis l'arbre du modèle face à la référence (version anglaise, cliquer pour la vidéo complète)](docs/demo.webp)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)
+[![Un run enregistré (Gemma 4 8B, 14 questions) rejoué dans la grille des résultats, question par question (version anglaise, cliquer pour la vidéo complète)](docs/demo.webp)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)
 
 <details><summary>Version française</summary>
 
-[![Une vraie série : Gemma 4 8B, cible ordinateur portable, trois questions notées en direct, puis l'arbre du modèle face à la référence (cliquer pour la vidéo complète)](docs/demo.fr.webp)](https://drive.google.com/file/d/15JcpR8w3qngJ69LFjV5XDcsr0UVX1xku/view)
+[![Un run enregistré (Gemma 4 8B, 14 questions) rejoué dans la grille des résultats, question par question (cliquer pour la vidéo complète)](docs/demo.fr.webp)](https://drive.google.com/file/d/105GwMn1GX_KIRfZ9NvLGpBM7OWnaJm9O/view)
 
 </details>
 
-*Une vraie série sur le banc, trois questions, attente accélérée. [Vidéo complète (0:57)](https://drive.google.com/file/d/15JcpR8w3qngJ69LFjV5XDcsr0UVX1xku/view)*
+*Un run enregistré rejoué sur le vrai banc (aucun modèle lancé), puis comparé à un autre run. [Vidéo complète (1:01)](https://drive.google.com/file/d/105GwMn1GX_KIRfZ9NvLGpBM7OWnaJm9O/view)*
 
 ## Ce qu'on fait avec
 
-- **Trois réglages.** Le modèle, le matériel visé et le prompt système. Le matériel fixe la taille de contexte ; les appareils où le modèle ne tient pas sont retirés.
+- **Grille des résultats.** Tous les runs enregistrés, question par question, dans une seule grille. Les questions du prochain run se cochent dans la même grille.
+- **Trois réglages.** Le modèle, le matériel visé et le prompt système. Le matériel fixe la taille de contexte ; les appareils où le modèle ne tient pas sont barrés.
 - **Jeu de questions.** 5 arbres d'indicateurs de performance, 6 chaînes causales, 17 QCM sur le cours, avec recherche dans ce cours (RAG).
 - **Vérifications.** Chaque réponse est validée contre un schéma, puis vérifiée : structure de l'arbre ou de la chaîne, transitions autorisées entre types de nœuds, lettre exacte pour les QCM. Score principal : questions entièrement correctes.
-- **Détail en direct.** Chaque question s'affiche dès qu'elle est notée. Elle s'ouvre sur les vérifications échouées, la réponse reçue et un graphe 3D de la réponse du modèle face à une réponse de référence.
-- **Historique.** Prompts système enregistrés en versions par famille ; une modification non enregistrée est signalée dans l'historique. La courbe ne relie que des séries comparables.
+- **Rejouer, comparer.** Un run s'ouvre dans un panneau latéral : rejouer ses réponses enregistrées question par question, le comparer à un autre run ou reprendre ses réglages. Un run en cours remplit sa propre colonne à chaque question notée.
+- **Détail.** Chaque question s'ouvre sur les vérifications échouées, la réponse du modèle dessinée face à la référence (2D ou 3D) et la sortie brute. Les prompts système sont enregistrés en versions par famille ; une modification non enregistrée est signalée dans le nom du run.
 
 ## Architecture
 

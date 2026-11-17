@@ -4,23 +4,24 @@
 
 **The same 28 questions for every small language model, scored by fixed rules, with no human or LLM judge.** Built to choose a model for an agent that runs on a VR headset or a phone.
 
-[![A real run: Gemma 4 8B, laptop target, three questions scored live, then the model's tree next to the reference (click for the full video)](docs/demo.webp)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)
+[![A recorded run (Gemma 4 8B, 14 questions) replayed in the results grid, question by question (click for the full video)](docs/demo.webp)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)
 
 <details><summary>French version</summary>
 
-[![Une vraie série : Gemma 4 8B, cible ordinateur portable, trois questions notées en direct, puis l'arbre du modèle face à la référence (cliquer pour la vidéo complète)](docs/demo.fr.webp)](https://drive.google.com/file/d/15JcpR8w3qngJ69LFjV5XDcsr0UVX1xku/view)
+[![Un run enregistré (Gemma 4 8B, 14 questions) rejoué dans la grille des résultats, question par question (cliquer pour la vidéo complète)](docs/demo.fr.webp)](https://drive.google.com/file/d/105GwMn1GX_KIRfZ9NvLGpBM7OWnaJm9O/view)
 
 </details>
 
-*A real run on the bench, three questions, waiting time sped up. [Full video (0:57)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)*
+*A recorded run replayed on the real bench (no model started), then compared with another run. [Full video (1:01)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)*
 
 ## Using it
 
-- **Three settings.** The model, the target hardware and the system prompt. The hardware sets the context window; devices the model does not fit on are removed.
+- **Results grid.** Every recorded run, question by question, in one grid. The questions of the next run are ticked in the same grid.
+- **Three settings.** The model, the target hardware and the system prompt. The hardware sets the context window; devices the model does not fit on are struck out.
 - **Question set.** 5 performance indicator trees, 6 causal chains, 17 multiple-choice questions on the course, answered with retrieval from it (RAG).
 - **Checks.** Each answer is validated against a schema, then checked: tree or chain structure, allowed transitions between node types, exact letter for multiple choice. Main score: questions fully correct.
-- **Live detail.** Each question appears as soon as it is scored. It opens on the failed checks, the raw answer and a 3D graph of the model's answer next to a reference answer.
-- **History.** System prompts saved as versions per family; an unsaved edit is flagged in the history. The curve only links comparable runs.
+- **Replay, compare.** A run opens in a side panel: replay its recorded answers question by question, compare it with another run, or reuse its settings. A live run fills its own column as each question is scored.
+- **Detail.** Each question opens on the failed checks, the model's answer drawn next to the reference (2D or 3D) and the raw output. System prompts are saved as versions per family; an unsaved edit is flagged in the run's name.
 
 ## Architecture
 
