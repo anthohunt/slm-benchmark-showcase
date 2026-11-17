@@ -4,9 +4,15 @@
 
 **Les mêmes 28 questions pour chaque petit modèle de langage, notées par des règles fixes, sans juge humain ni LLM-juge.** Construit pour choisir le modèle d'un agent qui tourne sur un casque de réalité virtuelle ou un téléphone.
 
-[![Une vraie série : Gemma 4 8B, cible ordinateur portable, trois questions notées en direct, puis l'arbre du modèle face à la référence (cliquer pour la vidéo complète)](docs/demo.gif)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)
+[![Une vraie série : Gemma 4 8B, cible ordinateur portable, trois questions notées en direct, puis l'arbre du modèle face à la référence (version anglaise, cliquer pour la vidéo complète)](docs/demo.webp)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)
 
-*Une vraie série sur le banc, trois questions, attente accélérée. [Vidéo complète (0:57)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)*
+<details><summary>Version française</summary>
+
+[![Une vraie série : Gemma 4 8B, cible ordinateur portable, trois questions notées en direct, puis l'arbre du modèle face à la référence (cliquer pour la vidéo complète)](docs/demo.fr.webp)](https://drive.google.com/file/d/15JcpR8w3qngJ69LFjV5XDcsr0UVX1xku/view)
+
+</details>
+
+*Une vraie série sur le banc, trois questions, attente accélérée. [Vidéo complète (0:57)](https://drive.google.com/file/d/15JcpR8w3qngJ69LFjV5XDcsr0UVX1xku/view)*
 
 ## Ce qu'on fait avec
 

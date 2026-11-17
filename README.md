@@ -4,7 +4,13 @@
 
 **The same 28 questions for every small language model, scored by fixed rules, with no human or LLM judge.** Built to choose a model for an agent that runs on a VR headset or a phone.
 
-[![A real run: Gemma 4 8B, laptop target, three questions scored live, then the model's tree next to the reference (click for the full video)](docs/demo.gif)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)
+[![A real run: Gemma 4 8B, laptop target, three questions scored live, then the model's tree next to the reference (click for the full video)](docs/demo.webp)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)
+
+<details><summary>French version</summary>
+
+[![Une vraie série : Gemma 4 8B, cible ordinateur portable, trois questions notées en direct, puis l'arbre du modèle face à la référence (cliquer pour la vidéo complète)](docs/demo.fr.webp)](https://drive.google.com/file/d/15JcpR8w3qngJ69LFjV5XDcsr0UVX1xku/view)
+
+</details>
 
 *A real run on the bench, three questions, waiting time sped up. [Full video (0:57)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)*
 
