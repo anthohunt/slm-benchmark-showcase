@@ -20,6 +20,12 @@
 
 ![Architecture du banc : le navigateur lance une série sur le serveur de l'école ; le banc cherche dans l'index du cours pour les QCM, interroge le modèle servi par Ollama, note la réponse JSON par des règles fixes, enregistre le résultat et affiche chaque question en direct](docs/architecture.svg)
 
+<details><summary>Diagramme en français</summary>
+
+![Architecture du banc : le navigateur lance une série sur le serveur de l'école ; le banc cherche dans l'index du cours pour les QCM, interroge le modèle servi par Ollama, note la réponse JSON par des règles fixes, enregistre le résultat et affiche chaque question en direct](docs/architecture.fr.svg)
+
+</details>
+
 ## Déploiement
 
 - **Hébergement.** Conteneur Docker sur un serveur de l'école, joignable seulement par le VPN de l'école, en service continu depuis juillet 2026.

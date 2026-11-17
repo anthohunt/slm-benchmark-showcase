@@ -20,7 +20,11 @@
 
 ![Bench architecture: the browser starts a run on the school server; the bench searches the course index for multiple-choice questions, asks the model served by Ollama, scores the JSON answer with fixed rules, stores the result and shows each question live](docs/architecture.svg)
 
-*Diagram labels are in French.*
+<details><summary>French version</summary>
+
+![Architecture du banc : le navigateur lance une série sur le serveur de l'école ; le banc cherche dans l'index du cours pour les QCM, interroge le modèle servi par Ollama, note la réponse JSON par des règles fixes, enregistre le résultat et affiche chaque question en direct](docs/architecture.fr.svg)
+
+</details>
 
 ## Deployment
 
