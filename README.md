@@ -1,44 +1,48 @@
 **English** · [Français](README.fr.md)
 
-**Anthony Hunt** · [Project page on ingevision.cloud](https://ingevision.cloud/?lang=en&p=banc-slm) · [LinkedIn](https://www.linkedin.com/in/anthony-hunt-3948a9196) · [GitHub profile](https://github.com/anthohunt)
-
-> Showcase repository: the code and data of this project are private; this README describes it.
-
 # Small-model benchmark
 
-A web bench that puts the same set of 28 questions to small language models (SLMs) and scores their answers without a human or LLM judge.
+**The same 28 questions for every small language model, scored by fixed rules, with no human or LLM judge.** Built to choose a model for an agent that runs on a VR headset or a phone.
 
-## The problem
+[![A recorded run (Gemma 4 8B): the model's tree and the reference side by side in 3D, then a causal chain (click for the full video)](docs/demo.webp)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)
 
-Choosing a small model for an on-device agent (virtual reality headset, smartphone) requires knowing what it actually gets right, with which instructions and within which memory. The bench was built for a supervised internship at an engineering school: the student runs series and reads the results on their own.
+<details><summary>French version</summary>
 
-## How it works
+[![Un run enregistré (Gemma 4 8B) : l'arbre du modèle face à la référence en 3D, puis une chaîne causale (cliquer pour la vidéo complète)](docs/demo.fr.webp)](https://drive.google.com/file/d/105GwMn1GX_KIRfZ9NvLGpBM7OWnaJm9O/view)
 
-- Three settings: the model, the target hardware (Quest 3 headset, 8 or 12 GB smartphone, 16 GB laptop, 32 GB workstation, server) and the system prompt. The hardware sets the context size; devices the model does not fit on are removed.
-- 28 questions in three families: 5 performance indicator trees, 6 causal chains, 17 multiple-choice questions on a course, with retrieval from that course (RAG).
-- Each answer is validated against a schema, then scored by deterministic rules: tree or chain structure, allowed transitions between node types, exact letter for multiple-choice questions.
-- The main score is the number of fully correct questions; alongside it, first-attempt successes and the average of rules passed.
-- Each question expands: failed checks, raw answer, 3D graph of the model's answer next to a reference answer.
+</details>
 
-## What is built
+*A recorded run on the real bench (no model started): 3D graphs of the model's answers against the reference, replay, then comparison with another run. [Full video (1:14)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)*
 
-Running continuously on the institution's internal network.
+## Using it
 
-- Three models available: Gemma 4 26B, Gemma 4 8B and LFM2.5-1.2B, the target small model.
-- System prompts saved as versions per family; a prompt modified without being saved is flagged and marked in the history.
-- Run history and a curve that only links comparable runs.
-- Check before handover: 6 combinations out of 6 with no technical error. Time per question: 120 to 175 s for the 26B, 40 to 57 s for the 8B, 14 s for LFM2.5.
-- Models run on CPU: measured latencies say nothing about a GPU or a headset.
-- Not done yet: archiving the exact prompt text with each run, repeating a question to measure variance, keeping raw output from complete failures.
+- **Results grid.** Every recorded run, question by question, in one grid. The questions of the next run are ticked in the same grid.
+- **Three settings.** The model, the target hardware and the system prompt. The hardware sets the context window; devices the model does not fit on are struck out.
+- **Question set.** 5 performance indicator trees, 6 causal chains, 17 multiple-choice questions on the course, answered with retrieval from it (RAG).
+- **Checks.** Each answer is validated against a schema, then checked: tree or chain structure, allowed transitions between node types, exact letter for multiple choice. Main score: questions fully correct.
+- **Replay, compare.** A run opens in a side panel: replay its recorded answers question by question, compare it with another run, or reuse its settings. A live run fills its own column as each question is scored.
+- **Detail.** Each question opens on the model's answer and the reference as 3D graphs (rotate, tap a node for its name; 2D on request), then the failed checks and the raw output. System prompts are saved as versions per family; an unsaved edit is flagged in the run's name.
 
-## What is public
+## Architecture
 
-This showcase is public; the code, questions and results remain private, in the institution's repository.
+![Bench architecture: the browser starts a run on the school server; the bench searches the course index for multiple-choice questions, asks the model served by Ollama, scores the JSON answer with fixed rules, stores the result and shows each question live](docs/architecture.svg)
 
-## Tech stack
+<details><summary>French version</summary>
 
-- Python, uv
-- Ollama, pydantic-ai and Pydantic for structured outputs
-- LangChain, Chroma and nomic-embed-text for course retrieval
-- Three.js for 3D graphs
-- Docker Compose
+![Architecture du banc : le navigateur lance une série sur le serveur de l'école ; le banc cherche dans l'index du cours pour les QCM, interroge le modèle servi par Ollama, note la réponse JSON par des règles fixes, enregistre le résultat et affiche chaque question en direct](docs/architecture.fr.svg)
+
+</details>
+
+## Deployment
+
+- **Hosting.** Docker container on a school server, reachable only through the school VPN, running continuously since July 2026.
+- **Models.** The school's shared Ollama server, on CPU in August 2026 and on GPU on 16 November 2026; its latencies say nothing about a headset. On 16 November only Gemma 4 8B was installed: Gemma 4 26B and LFM2.5-1.2B are listed but no longer run.
+- **Use.** Made for a supervised summer internship at an engineering school; 146 runs recorded between 1 and 10 August 2026.
+- **Not done yet.** Storing the exact prompt text with each run, repeating a question to measure variance, keeping the raw output of complete failures.
+- **Stack.** Python, uv, pydantic-ai, Pydantic, LangChain, Chroma, nomic-embed-text, Three.js, Docker Compose.
+
+---
+
+**Anthony Hunt** · [ingevision.cloud](https://ingevision.cloud/?lang=en&p=banc-slm) · [LinkedIn](https://www.linkedin.com/in/anthony-hunt-3948a9196) · [GitHub](https://github.com/anthohunt)
+
+The code, questions and results are private, in the school's repository.
