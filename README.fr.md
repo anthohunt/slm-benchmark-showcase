@@ -4,15 +4,15 @@
 
 **Les mêmes 28 questions pour chaque petit modèle de langage, notées par des règles fixes, sans juge humain ni LLM-juge.** Construit pour choisir le modèle d'un agent qui tourne sur un casque de réalité virtuelle ou un téléphone.
 
-[![Un run enregistré (Gemma 4 8B) : l'arbre du modèle face à la référence en 3D, puis une chaîne causale (version anglaise, cliquer pour la vidéo complète)](docs/demo.webp)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)
+![Un run enregistré (Gemma 4 8B) : l'arbre du modèle face à la référence en 3D, puis une chaîne causale (version anglaise)](docs/demo.webp)
 
 <details><summary>Version française</summary>
 
-[![Un run enregistré (Gemma 4 8B) : l'arbre du modèle face à la référence en 3D, puis une chaîne causale (cliquer pour la vidéo complète)](docs/demo.fr.webp)](https://drive.google.com/file/d/105GwMn1GX_KIRfZ9NvLGpBM7OWnaJm9O/view)
+![Un run enregistré (Gemma 4 8B) : l'arbre du modèle face à la référence en 3D, puis une chaîne causale](docs/demo.fr.webp)
 
 </details>
 
-*Un run enregistré sur le vrai banc (aucun modèle lancé) : graphes 3D des réponses du modèle face à la référence, rejeu, puis comparaison avec un autre run. [Vidéo complète (1:14)](https://drive.google.com/file/d/105GwMn1GX_KIRfZ9NvLGpBM7OWnaJm9O/view)*
+*Un run enregistré sur le vrai banc (aucun modèle lancé) : graphes 3D des réponses du modèle face à la référence, rejeu, puis comparaison avec un autre run.*
 
 ## Ce qu'on fait avec
 
