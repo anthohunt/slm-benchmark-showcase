@@ -4,15 +4,15 @@
 
 **The same 28 questions for every small language model, scored by fixed rules, with no human or LLM judge.** Built to choose a model for an agent that runs on a VR headset or a phone.
 
-[![A recorded run (Gemma 4 8B): the model's tree and the reference side by side in 3D, then a causal chain (click for the full video)](docs/demo.webp)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)
+![A recorded run (Gemma 4 8B): the model's tree and the reference side by side in 3D, then a causal chain](docs/demo.webp)
 
 <details><summary>French version</summary>
 
-[![Un run enregistré (Gemma 4 8B) : l'arbre du modèle face à la référence en 3D, puis une chaîne causale (cliquer pour la vidéo complète)](docs/demo.fr.webp)](https://drive.google.com/file/d/105GwMn1GX_KIRfZ9NvLGpBM7OWnaJm9O/view)
+![Un run enregistré (Gemma 4 8B) : l'arbre du modèle face à la référence en 3D, puis une chaîne causale](docs/demo.fr.webp)
 
 </details>
 
-*A recorded run on the real bench (no model started): 3D graphs of the model's answers against the reference, replay, then comparison with another run. [Full video (1:14)](https://drive.google.com/file/d/1gXnF-XwPWri-0Vd6SohdAlpc8grxw0cy/view)*
+*A recorded run on the real bench (no model started): 3D graphs of the model's answers against the reference, replay, then comparison with another run.*
 
 ## Using it
 
